@@ -1,6 +1,5 @@
-# cf-clean-ip-finder
-Cloudflare Clean IP + SNI Finder for Termux and Windows
 
+```markdown
 # Cloudflare Clean IP + SNI Domain Finder
 
 Find working Cloudflare IPs and SNI domains for v2ray, Xray, SNISPF.  
@@ -64,7 +63,7 @@ sudo apt update && sudo apt install curl -y
 
 ---
 
-📥 Download the script
+📥 Download the script (clone from GitHub)
 
 Open a terminal (Termux, Git Bash, or WSL) and run:
 
@@ -73,7 +72,12 @@ git clone https://github.com/HamidPalang/cf-clean-ip-finder.git
 cd cf-clean-ip-finder
 ```
 
-If you don't have git, you can download cf_finder.sh manually and put it in a folder.
+Important for users in restricted networks (e.g., Iran):
+
+· During download (git clone): You may need to use a VPN or anti-filtering tool to access GitHub.
+· During script execution: You must turn off your VPN completely. The script needs a direct connection to test IPs and SNI domains.
+
+If you don't have git, you can manually download the cf_finder.sh file and put it in a folder.
 
 ---
 
@@ -107,24 +111,24 @@ cd ~/storage/shared/cf-clean-ip-finder
 
 (Adjust the path if you cloned elsewhere.)
 
-1. Run the script:
+1. Turn OFF your VPN – this is critical.
+      The script will remind you. Press Enter after disabling.
+2. Run the script:
 
 ```bash
 bash cf_finder.sh
 ```
 
 1. Enter the number of random IPs (e.g., 80). More IPs = better chance but slower.
-2. Turn OFF your VPN (any VPN, proxy, or filter).
-      The script will show a message. Press Enter after disabling.
-3. Wait. The script will:
+2. Wait. The script will:
    · Test seed IPs
    · Generate and test random IPs
    · Pick the best IP
    · Test all SNI domains on that IP
-4. When finished, you will see two files in the same folder:
+3. When finished, you will see two files in the same folder:
    · cf_results_YYYYMMDD_HHMMSS.txt
    · cf_results_YYYYMMDD_HHMMSS.json
-5. View the results:
+4. View the results:
 
 ```bash
 cat cf_results_*.txt
@@ -138,16 +142,14 @@ On Windows – Git Bash
 
 1. Open the folder where you cloned the repo.
       Right-click inside the folder → Git Bash Here.
-2. Run the script:
+2. Disable any VPN or system proxy (very important).
+3. Run the script:
 
 ```bash
 bash cf_finder.sh
 ```
 
-1. Same steps as Termux:
-   · Enter number of IPs (e.g., 80)
-   · Disable any VPN or system proxy
-   · Press Enter
+1. Enter the number of IPs (e.g., 80) and press Enter.
 2. Wait for completion.
 3. Results are saved as .txt and .json in the same folder.
       Double-click the .txt file to open with Notepad.
@@ -169,13 +171,14 @@ If you cloned on Windows drive (e.g., Desktop):
 cd /mnt/c/Users/YourUserName/Desktop/cf-clean-ip-finder
 ```
 
-1. Run:
+1. Turn off any VPN on your Windows host (the script runs inside WSL but uses the host's network).
+2. Run:
 
 ```bash
 bash cf_finder.sh
 ```
 
-1. Follow the prompts (disable VPN, enter IP count).
+1. Follow the prompts.
 2. Results are in the same folder. Use cat or ls to see them.
 
 ---
@@ -256,6 +259,7 @@ No clean IPs found VPN must be 100% off. Try again with more IPs (e.g., 200). Ru
 No SNI domains found The best IP changed. Run the script again. Or add more domains to sni_domains.txt.
 nc: invalid option -- 'z' (Termux) Ignore it – the script falls back to /dev/tcp. Works fine.
 Script is very slow Reduce the number of IPs (e.g., 40) or lower CF_PARALLEL to 2.
+git clone fails (network error) You may need a VPN to access GitHub. Turn on VPN only for download, then turn it off before running the script.
 
 ---
 
@@ -282,5 +286,3 @@ Note: This tool is for educational purposes. Obey your local laws.
 Join our Telegram for new methods & support: https://t.me/maramivpn
 
 ```
-
----  
